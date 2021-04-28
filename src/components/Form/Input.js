@@ -1,5 +1,6 @@
 import React from "react";
 import styled, { css } from "styled-components";
+import PropTypes from "prop-types";
 
 import { fieldsLabels } from "../../constants/Labels";
 
@@ -17,7 +18,8 @@ const StyledInput = styled.input`
   ${(props) =>
     props.errorStyle &&
     css`
-      border: 1px solid ${(props) => props.theme.colors.danger || "red"};
+      border: ${(props) => props.theme.borderWidth} solid
+        ${(props) => props.theme.colors.danger};
     `};
 `;
 
@@ -50,5 +52,12 @@ function Input(props) {
     </FormItem>
   );
 }
+
+Input.propTypes = {
+  errors: PropTypes.object,
+  register: PropTypes.func,
+  activeEmployee: PropTypes.object,
+  property: PropTypes.string,
+};
 
 export default Input;

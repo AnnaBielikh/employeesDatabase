@@ -11,43 +11,49 @@ import EmployeeForm from "./components/Form/EmployeeForm";
 
 const StyledMain = styled.main`
   max-width: 100%;
-  width: ${(props) => props.width || props.theme.pageWidth};
+  width: ${(props) => props.theme.pageWidth};
   margin: 30px auto;
+  color: ${(props) => props.theme.colors.primary};
+
+  @media ${(props) => props.theme.media.tablet} {
+    padding: 0px 20px;
+  }
 `;
 
-function App(props) {
+function App() {
   const employeesListInit = [
     {
       id: 1,
-      name: "ann",
+      name: "Ann",
       surname: "Bielikh",
-      phone: "380905223696",
-      email: "biel@gfg.cob",
-      position: "3",
+      phone: "380500505555",
+      email: "bielikh@di.com",
+      position: "4",
       photo: "/images/image1.jpg",
     },
     {
       id: 2,
-      name: "den",
-      phone: "380905646565",
-      surname: "Smornov",
-      email: "sm@fgrerg.com",
+      name: "Den",
+      phone: "380507017170",
+      surname: "Ivanov",
+      email: "ivanov@di.com",
       position: "1",
     },
     {
       id: 3,
-      name: "nastya",
+      name: "Nastya",
       phone: "380905223696",
-      email: "gkifj@fvg.br",
+      email: "nastya@di.com",
       position: "2",
       photo: "/images/image2.jpg",
     },
     {
       id: 4,
-      name: "inna",
-      phone: "380905646565",
-      email: "inna@fvg.br",
+      name: "Inna",
+      phone: "380905556565",
+      email: "inna@di.com",
       position: "3",
+      photo: "/images/image3.jpg",
     },
   ];
 
@@ -59,7 +65,6 @@ function App(props) {
   const [activeEmployee, setActiveEmployee] = useState(null);
 
   function filterByPosition(employeesList) {
-    console.log("filter now");
     if (filter.length) {
       let newEmployeesList = employeesList.filter((item) =>
         filter.includes(item.position)
@@ -70,9 +75,7 @@ function App(props) {
   }
 
   function searchByNameAndPhone(employeesList) {
-    console.log("search now");
     if (search) {
-      console.log("search", search);
       let newEmployeesList = employeesList.filter((item) => {
         return (
           item.name.toLowerCase().includes(search.toLowerCase()) ||
@@ -85,7 +88,6 @@ function App(props) {
   }
 
   function sortByName(employeesList) {
-    console.log("sort now");
     if (sorting === "nameAsc") {
       return employeesList.sort(sortAsc);
     } else if (sorting === "nameDesc") {
@@ -124,7 +126,6 @@ function App(props) {
   };
 
   const changeSearch = (value) => {
-    console.log("changeSearch value", value);
     setSearch(value);
   };
 
@@ -133,7 +134,6 @@ function App(props) {
   };
 
   const addEmployee = (data) => {
-    // console.log("addEmployee", data);
     setEmployeesList(
       employeesList.concat([
         {
@@ -163,8 +163,8 @@ function App(props) {
 
   return (
     <Router>
-      <Header borderWidth="2px" addEmployeeInit={addEmployeeInit}></Header>
-      <StyledMain {...props}>
+      <Header addEmployeeInit={addEmployeeInit}></Header>
+      <StyledMain>
         <Switch>
           <Route exact path="/">
             <EmployeersList

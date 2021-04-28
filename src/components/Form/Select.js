@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import PropTypes from "prop-types";
 
 import { positionsList } from "../../constants/Labels";
 
@@ -32,5 +33,11 @@ function Select(props) {
     </StyledSelect>
   );
 }
+
+Select.propTypes = {
+  register: PropTypes.func,
+  activeEmployee: PropTypes.object,
+  property: PropTypes.string,
+};
 
 export default Select;

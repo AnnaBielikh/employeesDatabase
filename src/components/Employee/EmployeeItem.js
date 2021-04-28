@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-
-import { positionsList } from "../../constants/Labels";
+import PropTypes from "prop-types";
 
 import EmployeeItemImage from "./EmployeeItemImage";
 import EmployeeItemControl from "./EmployeeItemControl";
@@ -16,9 +15,14 @@ const StyledDiv = styled.div`
   margin-bottom: 20px;
   border-radius: ${(props) => props.theme.borderRadius};
   position: relative;
+  background-color: ${(props) => props.theme.colors.background};
 
   &:hover {
     box-shadow: ${(props) => props.theme.boxShadow};
+  }
+
+  @media ${(props) => props.theme.media.tablet} {
+    width: 100%;
   }
 `;
 
@@ -39,5 +43,9 @@ function EmployeeItem(props) {
     </StyledDiv>
   );
 }
+
+EmployeeItem.propTypes = {
+  item: PropTypes.object,
+};
 
 export default EmployeeItem;

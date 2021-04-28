@@ -1,11 +1,13 @@
 import React from "react";
 import styled, { css } from "styled-components";
+import PropTypes from "prop-types";
 
 const StyledDiv = styled.div`
   padding: 20px 30px;
   border-radius: 4px;
-  font-size: 18px;
-  margin: 20px 0px;
+  font-size: ${(props) => props.theme.fontSize.big.size};
+  line-height: ${(props) => props.theme.fontSize.big.lineHeight};
+  margin: 30px 0px;
   color: #155724;
   background-color: #d4edda;
   border-color: #c3e6cb;
@@ -22,5 +24,9 @@ const StyledDiv = styled.div`
 function Alert({ children, ...props }) {
   return <StyledDiv {...props}>{children}</StyledDiv>;
 }
+
+Alert.propTypes = {
+  children: PropTypes.string.isRequired,
+};
 
 export default Alert;

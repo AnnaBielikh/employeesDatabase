@@ -2,6 +2,7 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { useHistory } from "react-router-dom";
 import styled from "styled-components";
+import PropTypes from "prop-types";
 
 import { fieldsLabels } from "../../constants/Labels";
 
@@ -12,7 +13,7 @@ import Button from "./Button";
 import Select from "./Select";
 
 const StyledForm = styled.form`
-  background-color: ${(props) => props.theme.colors.background || "#ffffff"};
+  background-color: ${(props) => props.theme.colors.background};
   border-radius: ${(props) => props.theme.borderRadius};
   padding: 30px;
   display: flex;
@@ -98,5 +99,11 @@ function Employee(props) {
     </StyledForm>
   );
 }
+
+Employee.propTypes = {
+  activeEmployee: PropTypes.object,
+  addEmployee: PropTypes.func,
+  editEmployee: PropTypes.func,
+};
 
 export default Employee;

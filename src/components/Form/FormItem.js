@@ -5,6 +5,10 @@ const StyledDiv = styled.div`
   width: 48%;
   margin-bottom: 45px;
   position: relative;
+
+  @media ${(props) => props.theme.media.tablet} {
+    width: 100%;
+  }
 `;
 
 function FormItem({ children }) {

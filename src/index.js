@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { createGlobalStyle, ThemeProvider } from "styled-components";
+
 import App from "./App";
 
 const Global = createGlobalStyle`
@@ -10,18 +11,22 @@ const Global = createGlobalStyle`
   box-sizing: border-box;
   font-size: 16px;
   line-height: 20px;
+
+  body{
+    background-color: #f7f7f6;
+  }
 }
 `;
 
 const theme = {
   colors: {
     primary: "#333333",
-    secondary: "#FF8C00",
-    success: "#28a745",
+    secondary: "#9FEDD7",
+    info: "#FCE181",
     danger: "#dc3545",
-    border: "#666666",
-    link: "#17a2b8",
-    background: "#eeeeee",
+    border: "#026670",
+    link: "#FEF9C7",
+    background: "#FFFFFF",
   },
   fontSize: {
     small: {
@@ -30,13 +35,16 @@ const theme = {
     },
     big: {
       size: "22px",
-      lineHeight: "26px",
+      lineHeight: "28px",
     },
   },
   boxShadow: "4px 4px 8px 0px rgba(34, 60, 80, 0.2)",
-  pageWidth: "800px",
+  pageWidth: "750px",
   borderRadius: "8px",
   borderWidth: "1px",
+  media: {
+    tablet: "(max-width: 768px)",
+  },
 };
 
 ReactDOM.render(

@@ -1,6 +1,7 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
 import styled from "styled-components";
+import PropTypes from "prop-types";
 
 import * as Icons from "../../icons";
 
@@ -32,7 +33,7 @@ function EmployeeItemControl(props) {
   return (
     <StyledDiv>
       <span onClick={() => handleEditEmployee(item.id)}>
-        <Icons.Edit color="#28a745"></Icons.Edit>
+        <Icons.Edit color="#026670"></Icons.Edit>
       </span>
       <span onClick={() => removeEmployee(item.id)}>
         <Icons.Remove color="#dc3545"></Icons.Remove>
@@ -40,5 +41,11 @@ function EmployeeItemControl(props) {
     </StyledDiv>
   );
 }
+
+EmployeeItemControl.propTypes = {
+  item: PropTypes.object,
+  removeEmployee: PropTypes.func,
+  editEmployeeInit: PropTypes.func,
+};
 
 export default EmployeeItemControl;

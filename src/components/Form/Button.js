@@ -1,12 +1,13 @@
 import React from "react";
 import styled, { css } from "styled-components";
+import PropTypes from "prop-types";
 
 const StyledButton = styled.button`
   display: block;
   margin: 0px auto;
   padding: 10px 20px;
   cursor: pointer;
-  background-color: ${(props) => props.theme.colors.background || "#ffffff"};
+  background-color: ${(props) => props.theme.colors.background};
   border: ${(props) => props.theme.borderWidth || "1px"} solid
     ${(props) => props.theme.colors.border || "#000000"};
   border-radius: ${(props) => props.theme.borderRadius};
@@ -27,16 +28,20 @@ const StyledButton = styled.button`
   ${(props) =>
     props.success &&
     css`
-      color: #fff;
+      color: #ffffff;
       background-color: #28a745;
       border-color: #28a745;
     `};
 `;
 
 function Button(props) {
-  return (
-    <StyledButton {...props}>{props.text ? props.text : "Save"}</StyledButton>
-  );
+  const { text } = props;
+
+  return <StyledButton {...props}>{text ? text : "Save"}</StyledButton>;
 }
+
+Button.propTypes = {
+  text: PropTypes.string,
+};
 
 export default Button;

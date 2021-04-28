@@ -1,18 +1,26 @@
 import React from "react";
 import styled from "styled-components";
+import PropTypes from "prop-types";
 
 import { sortList } from "../../constants/Labels";
 
 const StyledSelect = styled.select`
+  margin: 0px 20px 0px auto;
   width: 200px;
   height: 26px;
-  padding: 2px 6px;
   outline: none;
   border: ${(props) => props.theme.borderWidth || "1px"} solid
     ${(props) => props.theme.colors.border || "#000000"};
+
+  @media ${(props) => props.theme.media.tablet} {
+    order: 2;
+    width: 100%;
+    margin: 0px 0px 20px;
+  }
 `;
 
-function Sort({ sorting, changeSorting }) {
+function Sort(props) {
+  const { sorting, changeSorting } = props;
   const onChange = (event) => {
     changeSorting(event.target.value);
   };
@@ -29,5 +37,10 @@ function Sort({ sorting, changeSorting }) {
     </StyledSelect>
   );
 }
+
+Sort.propTypes = {
+  sorting: PropTypes.string,
+  changeSorting: PropTypes.func,
+};
 
 export default Sort;

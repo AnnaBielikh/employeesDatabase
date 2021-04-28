@@ -38,7 +38,7 @@ export const fieldsLabels = {
     label: "Phone number: ",
     required: true,
     errorMessage:
-      "Phone number is required. The minimum length is 5 characters. The maximum length is 20 characters",
+      "Phone number is required. Only numbers. The minimum length is 5 characters. The maximum length is 20 characters",
     pattern: /^[0-9]{5,20}$/i,
     minLengthValue: 5,
     maxLengthValue: 20,
