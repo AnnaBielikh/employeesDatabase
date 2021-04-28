@@ -15,8 +15,8 @@ const StyledEmployeersList = styled.div`
 function EmployeersList({ employeesList, ...props }) {
   return (
     <>
-      {console.log(employeesList)}
       <FilterBlock {...props}></FilterBlock>
+
       {employeesList && employeesList.length ? (
         <StyledEmployeersList {...props}>
           {employeesList.map((item, i) => {
@@ -25,8 +25,9 @@ function EmployeersList({ employeesList, ...props }) {
         </StyledEmployeersList>
       ) : (
         <Alert danger>
-          The employee database is empty. Please, add your first employee{" "}
-          <a href="/employee">here</a>
+          The employee database is empty or nothing was found for the selected
+          options. Please, add new employee
+          {/* <a href="/employee">here</a> */}
         </Alert>
       )}
     </>

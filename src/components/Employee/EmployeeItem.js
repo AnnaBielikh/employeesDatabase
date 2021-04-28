@@ -1,63 +1,41 @@
 import React from "react";
-import { useHistory } from "react-router-dom";
 import styled from "styled-components";
 
 import { positionsList } from "../../constants/Labels";
 
+import EmployeeItemImage from "./EmployeeItemImage";
+import EmployeeItemControl from "./EmployeeItemControl";
+import EmployeeItemLine from "./EmployeeItemLine";
+
 const StyledDiv = styled.div`
-  padding: 10px 15px;
-  width: ${(props) => props.width || "48%"};
-  border: ${(props) => props.borderWidth || props.theme.borderWidth}
-    ${(props) => props.borderType || "solid"}
-    ${(props) => props.borderColor || props.theme.colors.border};
+  padding: 10px 15px 10px 105px;
+  width: 48%;
+  min-height: 125px;
+  border: ${(props) => props.theme.borderWidth || "1px"} solid
+    ${(props) => props.theme.colors.border || "#000000"};
   margin-bottom: 20px;
-  border-radius: ${(props) => props.borderRadius || props.theme.borderRadius};
+  border-radius: ${(props) => props.theme.borderRadius};
+  position: relative;
+
+  &:hover {
+    box-shadow: ${(props) => props.theme.boxShadow};
+  }
 `;
 
-function EmployeeItem({ item, removeEmployee, editEmployeeInit, ...props }) {
-  const history = useHistory();
-
-  const handleEditEmployee = (id) => {
-    editEmployeeInit(id);
-    history.push("/employee");
-  };
+function EmployeeItem(props) {
+  const { item } = props;
 
   return (
-    <StyledDiv {...props}>
-      {item.name && (
-        <div>
-          <span>Name: </span>
-          {item.name}
-        </div>
-      )}
-      {item.surname && (
-        <div>
-          <span>Surname: </span>
-          {item.surname}
-        </div>
-      )}
-      {item.phone && (
-        <div>
-          <span>Phone: </span>
-          {item.phone}
-        </div>
-      )}
-      {item.email && (
-        <div>
-          <span>Email: </span>
-          {item.email}
-        </div>
-      )}
-      {item.position && positionsList && (
-        <div>
-          <span>Position: </span>
-          {positionsList[item.position]}
-        </div>
-      )}
-      <div>
-        <div onClick={() => handleEditEmployee(item.id)}>edit</div>
-        <div onClick={() => removeEmployee(item.id)}>remove</div>
-      </div>
+    <StyledDiv>
+      <EmployeeItemImage item={item}></EmployeeItemImage>
+
+      <EmployeeItemLine item={item} property="name"></EmployeeItemLine>
+      <EmployeeItemLine item={item} property="surname"></EmployeeItemLine>
+      <EmployeeItemLine item={item} property="phone"></EmployeeItemLine>
+      <EmployeeItemLine item={item} property="email"></EmployeeItemLine>
+      <EmployeeItemLine item={item} property="position"></EmployeeItemLine>
+
+      <EmployeeItemControl {...props}></EmployeeItemControl>
     </StyledDiv>
   );
 }

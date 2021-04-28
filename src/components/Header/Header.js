@@ -4,28 +4,26 @@ import styled from "styled-components";
 import MenuLink from "./MenuLink";
 
 const StyledHeader = styled.header`
-  border-bottom: ${(props) => props.borderWidth || props.theme.borderWidth}
-    ${(props) => props.borderType || "solid"}
-    ${(props) => props.borderColor || props.theme.colors.border};
-  background-color: ${(props) =>
-    props.backgroundColor || props.theme.colors.background};
+  border-bottom: ${(props) => props.theme.borderWidth || "2px"} solid
+    ${(props) => props.theme.colors.border || "#000000"};
+  background-color: ${(props) => props.theme.colors.background || "#ffffff"};
 `;
 
 const StyledNav = styled.nav`
-  width: ${(props) => props.width || props.theme.pageWidth};
-  margin: 0 auto;
   max-width: 100%;
+  width: ${(props) => props.theme.pageWidth || "800px"};
+  margin: 0 auto;
 `;
 
 const StyledUl = styled.ul`
-  display: ${(props) => props.display || "flex"};
-  align-items: ${(props) => props.align || "center"};
+  display: flex;
+  align-items: center;
 `;
 
 const Header = (props) => (
-  <StyledHeader {...props}>
-    <StyledNav {...props}>
-      <StyledUl {...props}>
+  <StyledHeader>
+    <StyledNav>
+      <StyledUl>
         <MenuLink
           addEmployeeInit={() => null}
           item={{ title: "Employees list", link: "/" }}

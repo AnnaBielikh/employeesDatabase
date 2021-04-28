@@ -6,16 +6,18 @@ import Search from "./Search";
 import Sotr from "./Sotr";
 
 const StyledDiv = styled.div`
-  display: flex;
-  justify-content: space-between;
+  display: ${(props) => props.display || "flex"};
+  flex-wrap: ${(props) => props.flexWrap || "wrap"};
+  justify-content: ${(props) => props.justifyContent || "space-between"};
+  align-items: ${(props) => props.alignItems || "center"};
 `;
 
 function FilterBlock(props) {
   return (
-    <StyledDiv>
-      <Search></Search>
+    <StyledDiv {...props}>
+      <Sotr {...props}></Sotr>
       <Filter {...props}></Filter>
-      <Sotr></Sotr>
+      <Search {...props}></Search>
     </StyledDiv>
   );
 }

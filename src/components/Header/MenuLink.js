@@ -8,22 +8,22 @@ const StyledLi = styled.li`
 `;
 
 const StyledNavLink = styled(NavLink)`
-  color: ${(props) => props.color || props.theme.colors.link};
-  padding: 20px 20px;
+  color: ${(props) => props.theme.colors.link || "#000000"};
+  padding: 15px;
   display: block;
 
   &.active {
     cursor: context-menu;
     text-decoration: none;
-    background-color: #e8eaec;
+    background-color: #bbbbbb;
+    color: ${(props) => props.theme.colors.primary || "#000000"};
   }
 `;
 
-const MenuLink = ({ color, addEmployeeInit, item }) => (
+const MenuLink = ({ addEmployeeInit, item }) => (
   <StyledLi>
     <StyledNavLink
       onClick={() => addEmployeeInit()}
-      color={color}
       exact
       to={item.link}
       activeClassName="active"
