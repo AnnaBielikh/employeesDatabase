@@ -16,7 +16,7 @@ const StyledInput = styled.input`
   }
 `;
 
-function Search(props) {
+const Search = (props) => {
   const { changeSearch, search } = props;
   const [searchTerm, setSearchTerm] = useState(search);
   const searchTermRef = useRef(search);
@@ -40,11 +40,11 @@ function Search(props) {
       onChange={(e) => setSearchTerm(e.target.value)}
     />
   );
-}
+};
 
 Search.propTypes = {
   search: PropTypes.string,
   changeSearch: PropTypes.func,
 };
 
-export default Search;
+export { Search };

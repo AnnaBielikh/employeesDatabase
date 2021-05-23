@@ -1,62 +1,20 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import styled from "styled-components";
 
 import { initSortValue } from "./constants/Labels";
-import { sortAsc, sortDesc, sortRelevance } from "./utils/compareName";
+import { employeesListInit } from "./mock";
+import {
+  compareNameByAsc,
+  compareNameByDesc,
+  compareIdByRelevance,
+} from "./utils/compareName";
+import { StyledMainContent } from "./index.style";
 
-import Header from "./components/Header/Header";
-import EmployeersList from "./containers/EmployeesList";
-import EmployeeForm from "./components/Form/EmployeeForm";
+import { Header } from "./components/header";
+import { EmployeersList } from "./components/employee/employeesList";
+import { EmployeeForm } from "./components/employee/employeeForm";
 
-const StyledMain = styled.main`
-  max-width: 100%;
-  width: ${(props) => props.theme.pageWidth};
-  margin: 30px auto;
-  color: ${(props) => props.theme.colors.primary};
-
-  @media ${(props) => props.theme.media.tablet} {
-    padding: 0px 20px;
-  }
-`;
-
-function App() {
-  const employeesListInit = [
-    {
-      id: 1,
-      name: "Ann",
-      surname: "Bielikh",
-      phone: "380500505555",
-      email: "bielikh@di.com",
-      position: "4",
-      photo: "/images/image1.jpg",
-    },
-    {
-      id: 2,
-      name: "Den",
-      phone: "380507017170",
-      surname: "Ivanov",
-      email: "ivanov@di.com",
-      position: "1",
-    },
-    {
-      id: 3,
-      name: "Nastya",
-      phone: "380905223696",
-      email: "nastya@di.com",
-      position: "2",
-      photo: "/images/image2.jpg",
-    },
-    {
-      id: 4,
-      name: "Inna",
-      phone: "380905556565",
-      email: "inna@di.com",
-      position: "3",
-      photo: "/images/image3.jpg",
-    },
-  ];
-
+const App = () => {
   const [employeesList, setEmployeesList] = useState(employeesListInit);
   const [filteredEmployeesList, setFilteredEmployeesList] = useState();
   const [filter, setFilter] = useState([]);
@@ -64,7 +22,7 @@ function App() {
   const [search, setSearch] = useState();
   const [activeEmployee, setActiveEmployee] = useState(null);
 
-  function filterByPosition(employeesList) {
+  const filterByPosition = (employeesList) => {
     if (filter.length) {
       let newEmployeesList = employeesList.filter((item) =>
         filter.includes(item.position)
@@ -72,9 +30,9 @@ function App() {
       return newEmployeesList;
     }
     return employeesList;
-  }
+  };
 
-  function searchByNameAndPhone(employeesList) {
+  const searchByNameAndPhone = (employeesList) => {
     if (search) {
       let newEmployeesList = employeesList.filter((item) => {
         return (
@@ -85,40 +43,33 @@ function App() {
       return newEmployeesList;
     }
     return employeesList;
-  }
+  };
 
-  function sortByName(employeesList) {
+  const sortByName = (employeesList) => {
     if (sorting === "nameAsc") {
-      return employeesList.sort(sortAsc);
+      return employeesList.sort(compareNameByAsc);
     } else if (sorting === "nameDesc") {
-      return employeesList.sort(sortDesc);
+      return employeesList.sort(compareNameByDesc);
     } else if (sorting === "relevance") {
-      return employeesList.sort(sortRelevance);
+      return employeesList.sort(compareIdByRelevance);
     }
-  }
+  };
 
   useEffect(() => {
-    let calculateEmployeesList = sortByName(
+    const calculateEmployeesList = sortByName(
       searchByNameAndPhone(filterByPosition(employeesList))
     );
-    let newEmployeesList = [];
-    newEmployeesList = newEmployeesList.concat(calculateEmployeesList);
 
-    setFilteredEmployeesList(newEmployeesList);
+    setFilteredEmployeesList([...calculateEmployeesList]);
   }, [employeesList, filter, sorting, search]);
 
   const changeFilter = (key) => {
-    let newFilter = [];
-    newFilter = newFilter.concat(filter);
+    const isFilterExist = filter.some((i) => i === key);
+    const updateFilters = isFilterExist
+      ? filter.filter((i) => i !== key)
+      : [...filter, key];
 
-    const index = newFilter.indexOf(key);
-    if (index === -1) {
-      newFilter.push(key);
-    } else {
-      newFilter.splice(index, 1);
-    }
-
-    setFilter(newFilter);
+    setFilter(updateFilters);
   };
 
   const changeSorting = (value) => {
@@ -134,14 +85,7 @@ function App() {
   };
 
   const addEmployee = (data) => {
-    setEmployeesList(
-      employeesList.concat([
-        {
-          id: Date.now(),
-          ...data,
-        },
-      ])
-    );
+    setEmployeesList([...employeesList, { id: Date.now(), ...data }]);
   };
 
   const editEmployee = (data) => {
@@ -164,7 +108,7 @@ function App() {
   return (
     <Router>
       <Header addEmployeeInit={addEmployeeInit}></Header>
-      <StyledMain>
+      <StyledMainContent>
         <Switch>
           <Route exact path="/">
             <EmployeersList
@@ -187,9 +131,9 @@ function App() {
             ></EmployeeForm>
           </Route>
         </Switch>
-      </StyledMain>
+      </StyledMainContent>
     </Router>
   );
-}
+};
 
-export default App;
+export { App };

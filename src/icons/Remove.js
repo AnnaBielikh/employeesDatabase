@@ -1,4 +1,4 @@
-function Remove({ color }) {
+export const Remove = ({ color }) => {
   return (
     <svg
       aria-hidden="true"
@@ -16,6 +16,4 @@ function Remove({ color }) {
       ></path>
     </svg>
   );
-}
-
-export default Remove;
+};

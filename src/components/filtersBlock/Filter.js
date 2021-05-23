@@ -66,7 +66,7 @@ const StyledLabel = styled.label`
   display: inline-block;
 `;
 
-function Filter(props) {
+const Filter = (props) => {
   const { filter, changeFilter } = props;
 
   return (
@@ -94,11 +94,11 @@ function Filter(props) {
       </StyledListWrapper>
     </StyledWrapper>
   );
-}
+};
 
 Filter.propTypes = {
   filter: PropTypes.array,
   changeFilter: PropTypes.func,
 };
 
-export default Filter;
+export { Filter };

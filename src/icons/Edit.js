@@ -1,4 +1,4 @@
-function Edit({ color }) {
+export const Edit = ({ color }) => {
   return (
     <svg
       aria-hidden="true"
@@ -16,6 +16,4 @@ function Edit({ color }) {
       ></path>
     </svg>
   );
-}
-
-export default Edit;
+};

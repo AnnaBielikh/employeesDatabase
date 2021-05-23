@@ -1,19 +1,10 @@
 import React from "react";
-import styled from "styled-components";
 import PropTypes from "prop-types";
 
 import { positionsList } from "../../constants/Labels";
+import { StyledSelect } from "./index.style";
 
-const StyledSelect = styled.select`
-  width: 100%;
-  height: 26px;
-  padding: 2px 6px;
-  outline: none;
-  border: ${(props) => props.theme.borderWidth || "1px"} solid
-    ${(props) => props.theme.colors.border || "#000000"};
-`;
-
-function Select(props) {
+const Select = (props) => {
   const { activeEmployee, property, register } = props;
 
   return (
@@ -32,7 +23,7 @@ function Select(props) {
       })}
     </StyledSelect>
   );
-}
+};
 
 Select.propTypes = {
   register: PropTypes.func,
@@ -40,4 +31,4 @@ Select.propTypes = {
   property: PropTypes.string,
 };
 
-export default Select;
+export { Select };

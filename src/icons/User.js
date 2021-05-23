@@ -1,4 +1,4 @@
-function User({ color }) {
+export const User = ({ color }) => {
   return (
     <svg
       aria-hidden="true"
@@ -16,6 +16,4 @@ function User({ color }) {
       ></path>
     </svg>
   );
-}
-
-export default User;
+};

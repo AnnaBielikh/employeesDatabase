@@ -1,0 +1,35 @@
+export const employeesListInit = [
+  {
+    id: 1,
+    name: "Ann",
+    surname: "Bielikh",
+    phone: "380500505555",
+    email: "bielikh@di.com",
+    position: "4",
+    photo: "/images/image1.jpg",
+  },
+  {
+    id: 2,
+    name: "Den",
+    phone: "380507017170",
+    surname: "Ivanov",
+    email: "ivanov@di.com",
+    position: "1",
+  },
+  {
+    id: 3,
+    name: "Nastya",
+    phone: "380905223696",
+    email: "nastya@di.com",
+    position: "2",
+    photo: "/images/image2.jpg",
+  },
+  {
+    id: 4,
+    name: "Inna",
+    phone: "380905556565",
+    email: "inna@di.com",
+    position: "3",
+    photo: "/images/image3.jpg",
+  },
+];

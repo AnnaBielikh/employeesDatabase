@@ -19,7 +19,7 @@ const StyledSelect = styled.select`
   }
 `;
 
-function Sort(props) {
+const Sort = (props) => {
   const { sorting, changeSorting } = props;
   const onChange = (event) => {
     changeSorting(event.target.value);
@@ -36,11 +36,11 @@ function Sort(props) {
       })}
     </StyledSelect>
   );
-}
+};
 
 Sort.propTypes = {
   sorting: PropTypes.string,
   changeSorting: PropTypes.func,
 };
 
-export default Sort;
+export { Sort };
