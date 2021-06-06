@@ -1,17 +1,72 @@
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
 
-import { StyledFiltersBlock } from "./index.style";
+import { sortList, positionsList } from "../../constants/Labels";
+import {
+  StyledFiltersBlock,
+  StyledSortForm,
+  StyledSearchForm,
+  StyledFiltersList,
+} from "./index.style";
 
-import { Filter } from "./Filter";
-import { Search } from "./Search";
-import { Sort } from "./Sort";
+import { Popup } from "../common/Popup";
+import { Input } from "../common/Input";
+import { Select } from "../common/Select";
+import { Checkbox } from "../common/Checkbox";
 
-const FiltersBlock = (props) => (
-  <StyledFiltersBlock>
-    <Filter {...props}></Filter>
-    <Sort {...props}></Sort>
-    <Search {...props}></Search>
-  </StyledFiltersBlock>
-);
+const FiltersBlock = (props) => {
+  const {
+    changeSearch,
+    search,
+    changeSorting,
+    sorting,
+    changeFilters,
+    filtersList,
+  } = props;
+  const [searchTerm, setSearchTerm] = useState(search);
+  const searchTermRef = useRef(search);
 
-export default FiltersBlock;
+  useEffect(() => {
+    if (searchTerm !== searchTermRef.current) {
+      const delayDebounceFn = setTimeout(() => {
+        searchTermRef.current = searchTerm;
+        changeSearch(searchTerm);
+      }, 1000);
+
+      return () => clearTimeout(delayDebounceFn);
+    }
+  }, [searchTerm, changeSearch]);
+
+  return (
+    <StyledFiltersBlock>
+      <Popup title="Filter by position">
+        <StyledFiltersList>
+          {Object.keys(positionsList).map((key, i) => (
+            <Checkbox
+              key={i}
+              name={key}
+              id={`position${key}`}
+              defaultChecked={filtersList.includes(key)}
+              label={positionsList[key]}
+              onClick={changeFilters}
+            ></Checkbox>
+          ))}
+        </StyledFiltersList>
+      </Popup>
+
+      <StyledSortForm onChange={(e) => changeSorting(e.target.value)}>
+        <Select defaultValue={sorting} optionsList={sortList}></Select>
+      </StyledSortForm>
+
+      <StyledSearchForm onChange={(e) => setSearchTerm(e.target.value)}>
+        <Input
+          type="text"
+          placeholder="Search..."
+          defaultValue={search}
+          autoComplete="off"
+        />
+      </StyledSearchForm>
+    </StyledFiltersBlock>
+  );
+};
+
+export { FiltersBlock };

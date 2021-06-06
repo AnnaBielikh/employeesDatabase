@@ -56,10 +56,43 @@ export const StyledInput = styled.input`
     `};
 `;
 
-export const StyledError = styled.div`
-  font-size: ${(props) => props.theme.fontSize.small.size};
-  line-height: ${(props) => props.theme.fontSize.small.lineHeight};
-  color: ${(props) => props.theme.colors.danger};
+export const StyledPopupTitle = styled.div`
+  border: ${(props) => props.theme.borderWidth || "1px"} solid
+    ${(props) => props.theme.colors.border || "#000000"};
+  background-color: ${(props) => props.theme.colors.background};
+  height: 26px;
+  padding: 2px 6px;
+  cursor: pointer;
+`;
+
+export const StyledPopupBody = styled.div`
+  display: none;
   position: absolute;
-  margin-top: 3px;
+  z-index: 5;
+  width: 100%;
+  padding-top: 10px;
+`;
+
+export const StyledPopupWrapper = styled.div`
+  width: 200px;
+  position: relative;
+
+  &:hover ${StyledPopupBody} {
+    display: block;
+  }
+
+  @media ${(props) => props.theme.media.tablet} {
+    order: 3;
+    width: 100%;
+  }
+`;
+
+export const StyledCheckboxWrapper = styled.div`
+  margin-bottom: 5px;
+`;
+
+export const StyledCheckboxLabel = styled.label`
+  padding-left: 5px;
+  cursor: pointer;
+  display: inline-block;
 `;

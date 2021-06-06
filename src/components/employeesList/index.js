@@ -3,15 +3,15 @@ import PropTypes from "prop-types";
 
 import { StyledEmployeesList, StyledAlert } from "./index.style";
 
-import FilterBlock from "../../filtersBlock";
-import { EmployeeCard } from "./EmployeeCard";
+import { FiltersBlock } from "../filtersBlock";
+import { EmployeeCard } from "../employeeCard";
 
 const EmployeersList = (props) => {
   const { employeesList } = props;
 
   return (
     <>
-      <FilterBlock {...props}></FilterBlock>
+      <FiltersBlock {...props}></FiltersBlock>
 
       {employeesList && employeesList.length ? (
         <StyledEmployeesList {...props}>

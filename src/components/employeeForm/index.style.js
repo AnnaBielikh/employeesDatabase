@@ -23,3 +23,11 @@ export const StyledLabel = styled.label`
   display: block;
   margin-bottom: 5px;
 `;
+
+export const StyledError = styled.div`
+  font-size: ${(props) => props.theme.fontSize.small.size};
+  line-height: ${(props) => props.theme.fontSize.small.lineHeight};
+  color: ${(props) => props.theme.colors.danger};
+  position: absolute;
+  margin-top: 3px;
+`;

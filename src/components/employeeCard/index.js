@@ -2,7 +2,7 @@ import React from "react";
 import { useHistory } from "react-router-dom";
 import PropTypes from "prop-types";
 
-import { fieldsLabels, positionsList } from "../../../constants/Labels";
+import { fieldsLabels, positionsList } from "../../constants/Labels";
 import {
   StyledEmployeeCard,
   StyledEmployeeCardLine,
@@ -10,14 +10,14 @@ import {
   StyledEditRemoveBtn,
 } from "./index.style";
 
-import { User, Edit, Remove } from "../../../icons";
+import { User, Edit, Remove } from "../../icons";
 
 const EmployeeCard = (props) => {
-  const { item, removeEmployee, editEmployeeInit } = props;
+  const { item, removeEmployee, setActiveEmployee } = props;
   const history = useHistory();
 
-  const handleEditEmployee = (id) => {
-    editEmployeeInit(id);
+  const handleEditEmployee = (item) => {
+    setActiveEmployee(item);
     history.push("/employee");
   };
 
@@ -69,7 +69,7 @@ const EmployeeCard = (props) => {
       )}
 
       <StyledEditRemoveBtn>
-        <span onClick={() => handleEditEmployee(item.id)}>
+        <span onClick={() => handleEditEmployee(item)}>
           <Edit color="#026670"></Edit>
         </span>
         <span onClick={() => removeEmployee(item.id)}>

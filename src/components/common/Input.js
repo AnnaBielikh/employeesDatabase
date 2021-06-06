@@ -1,43 +1,28 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import { StyledInput, StyledError } from "./index.style";
-import { fieldsLabels } from "../../constants/Labels";
+import { StyledInput } from "./index.style";
 
 const Input = (props) => {
-  const { errors, activeEmployee, register, property } = props;
-  const propertyLabel = fieldsLabels[property];
+  const { isError, register, type, placeholder, defaultValue } = props;
 
   return (
-    <>
-      <StyledInput
-        type={propertyLabel.type}
-        placeholder={propertyLabel.placeholder}
-        errorStyle={errors[property] && "true"}
-        defaultValue={
-          activeEmployee && activeEmployee[property]
-            ? activeEmployee[property]
-            : ""
-        }
-        {...register(property, {
-          required: propertyLabel.required,
-          minLength: propertyLabel.minLengthValue,
-          maxLength: propertyLabel.maxLengthValue,
-          pattern: propertyLabel.pattern,
-        })}
-      />
-      {errors[property] && propertyLabel.errorMessage && (
-        <StyledError>{propertyLabel.errorMessage}</StyledError>
-      )}
-    </>
+    <StyledInput
+      type={type && type}
+      placeholder={placeholder && placeholder}
+      errorStyle={isError && "true"}
+      defaultValue={defaultValue && defaultValue}
+      {...register}
+    />
   );
 };
 
 Input.propTypes = {
-  errors: PropTypes.object,
-  register: PropTypes.func,
+  isError: PropTypes.object,
+  register: PropTypes.object,
   activeEmployee: PropTypes.object,
   property: PropTypes.string,
+  type: PropTypes.string,
 };
 
 export { Input };

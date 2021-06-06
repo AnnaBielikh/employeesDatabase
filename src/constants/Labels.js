@@ -10,8 +10,8 @@ export const positionsList = {
 
 export const sortList = {
   relevance: "Relevance",
-  nameAsc: "Name (ascending)",
-  nameDesc: "Name (descending)",
+  asc: "Name (ascending)",
+  desc: "Name (descending)",
 };
 export const initSortValue = "relevance";
 

@@ -10,7 +10,7 @@ import {
 } from "./index.style";
 
 const Header = (props) => {
-  const { addEmployeeInit } = props;
+  const { setActiveEmployee } = props;
 
   return (
     <StyledHeader>
@@ -23,7 +23,7 @@ const Header = (props) => {
           </StyledHeaderdMenuItem>
           <StyledHeaderdMenuItem>
             <StyledHeaderdMenuLink
-              onClick={addEmployeeInit}
+              onClick={() => setActiveEmployee(null)}
               exact
               to="/employee"
               activeClassName="active"
