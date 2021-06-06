@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import PropTypes from "prop-types";
 
 import { sortList, positionsList } from "../../constants/Labels";
 import {
@@ -67,6 +68,15 @@ const FiltersBlock = (props) => {
       </StyledSearchForm>
     </StyledFiltersBlock>
   );
+};
+
+FiltersBlock.propTypes = {
+  changeSearch: PropTypes.func,
+  search: PropTypes.string,
+  changeSorting: PropTypes.func,
+  sorting: PropTypes.string,
+  changeFilters: PropTypes.func,
+  filtersList: PropTypes.arrayOf(PropTypes.shape),
 };
 
 export { FiltersBlock };

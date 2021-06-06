@@ -82,6 +82,8 @@ const EmployeeCard = (props) => {
 
 EmployeeCard.propTypes = {
   item: PropTypes.object,
+  removeEmployee: PropTypes.func,
+  setActiveEmployee: PropTypes.func,
 };
 
 export { EmployeeCard };

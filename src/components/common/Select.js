@@ -21,8 +21,8 @@ const Select = (props) => {
 
 Select.propTypes = {
   register: PropTypes.object,
-  activeEmployee: PropTypes.object,
-  property: PropTypes.string,
+  optionsList: PropTypes.object,
+  defaultValue: PropTypes.string,
 };
 
 export { Select };

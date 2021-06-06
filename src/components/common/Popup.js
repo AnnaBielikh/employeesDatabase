@@ -19,8 +19,7 @@ const Popup = (props) => {
 };
 
 Popup.propTypes = {
-  filter: PropTypes.array,
-  changeFilter: PropTypes.func,
+  title: PropTypes.string,
 };
 
 export { Popup };

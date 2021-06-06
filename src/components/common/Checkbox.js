@@ -23,10 +23,11 @@ const Checkbox = (props) => {
 };
 
 Checkbox.propTypes = {
-  isError: PropTypes.object,
-  register: PropTypes.object,
-  property: PropTypes.string,
-  type: PropTypes.string,
+  id: PropTypes.string,
+  name: PropTypes.string,
+  defaultChecked: PropTypes.bool,
+  label: PropTypes.string,
+  onClick: PropTypes.func,
 };
 
 export { Checkbox };

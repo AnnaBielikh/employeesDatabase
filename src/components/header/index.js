@@ -38,7 +38,7 @@ const Header = (props) => {
 };
 
 Header.propTypes = {
-  addEmployeeInit: PropTypes.func,
+  setActiveEmployee: PropTypes.func,
 };
 
 export { Header };

@@ -20,8 +20,8 @@ const Input = (props) => {
 Input.propTypes = {
   isError: PropTypes.object,
   register: PropTypes.object,
-  activeEmployee: PropTypes.object,
-  property: PropTypes.string,
+  defaultValue: PropTypes.string,
+  placeholder: PropTypes.string,
   type: PropTypes.string,
 };
 

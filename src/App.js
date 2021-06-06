@@ -48,6 +48,7 @@ const App = () => {
   return (
     <Router>
       <Header setActiveEmployee={setActiveEmployee}></Header>
+
       <StyledMainContent>
         <Switch>
           <Route exact path="/">

@@ -156,8 +156,7 @@ const EmployeeForm = (props) => {
 
 EmployeeForm.propTypes = {
   activeEmployee: PropTypes.object,
-  addEmployee: PropTypes.func,
-  editEmployee: PropTypes.func,
+  saveEmployee: PropTypes.func,
 };
 
 export { EmployeeForm };
