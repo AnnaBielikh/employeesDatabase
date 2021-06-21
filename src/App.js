@@ -62,6 +62,7 @@ const App = () => {
               changeSorting={(value) => setSorting(value)}
               search={search}
               changeSearch={(value) => setSearch(value)}
+              resetFilters={() => setFiltersList([])}
             />
           </Route>
           <Route path="/employee">

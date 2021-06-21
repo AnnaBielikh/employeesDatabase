@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import { StyledCheckboxWrapper, StyledCheckboxLabel } from "./index.style";
 
 const Checkbox = (props) => {
-  const { id, name, defaultChecked, label, onClick } = props;
+  const { id, name, label, onChange, checked } = props;
 
   return (
     <StyledCheckboxWrapper>
@@ -12,8 +12,8 @@ const Checkbox = (props) => {
         type="checkbox"
         id={id && id}
         name={name && name}
-        onClick={() => onClick(name)}
-        defaultChecked={defaultChecked && defaultChecked}
+        onChange={() => onChange(name)}
+        checked={checked && checked}
       ></input>
       <StyledCheckboxLabel htmlFor={id && id}>
         {label && label}
@@ -25,9 +25,9 @@ const Checkbox = (props) => {
 Checkbox.propTypes = {
   id: PropTypes.string,
   name: PropTypes.string,
-  defaultChecked: PropTypes.bool,
+  checked: PropTypes.bool,
   label: PropTypes.string,
-  onClick: PropTypes.func,
+  onChange: PropTypes.func,
 };
 
 export { Checkbox };

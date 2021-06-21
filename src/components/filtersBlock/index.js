@@ -13,6 +13,7 @@ import { Popup } from "../common/Popup";
 import { Input } from "../common/Input";
 import { Select } from "../common/Select";
 import { Checkbox } from "../common/Checkbox";
+import { Button } from "../common/Button";
 
 const FiltersBlock = (props) => {
   const {
@@ -22,6 +23,7 @@ const FiltersBlock = (props) => {
     sorting,
     changeFilters,
     filtersList,
+    resetFilters,
   } = props;
   const [searchTerm, setSearchTerm] = useState(search);
   const searchTermRef = useRef(search);
@@ -41,16 +43,18 @@ const FiltersBlock = (props) => {
     <StyledFiltersBlock>
       <Popup title="Filter by position">
         <StyledFiltersList>
+          {console.log(filtersList)}
           {Object.keys(positionsList).map((key, i) => (
             <Checkbox
               key={i}
               name={key}
               id={`position${key}`}
-              defaultChecked={filtersList.includes(key)}
               label={positionsList[key]}
-              onClick={changeFilters}
+              onChange={changeFilters}
+              checked={filtersList.includes(key) ? true : false}
             ></Checkbox>
           ))}
+          <Button text="Clear" onClick={resetFilters}></Button>
         </StyledFiltersList>
       </Popup>
 
@@ -77,6 +81,7 @@ FiltersBlock.propTypes = {
   sorting: PropTypes.string,
   changeFilters: PropTypes.func,
   filtersList: PropTypes.arrayOf(PropTypes.shape),
+  resetFilters: PropTypes.func,
 };
 
 export { FiltersBlock };

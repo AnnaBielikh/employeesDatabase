@@ -17,6 +17,7 @@ const EmployeersList = (props) => {
     changeSorting,
     search,
     changeSearch,
+    resetFilters,
   } = props;
 
   return (
@@ -28,6 +29,7 @@ const EmployeersList = (props) => {
         sorting={sorting}
         changeFilters={changeFilters}
         filtersList={filtersList}
+        resetFilters={resetFilters}
       ></FiltersBlock>
 
       {employeesList && employeesList.length ? (
@@ -63,6 +65,7 @@ EmployeersList.propTypes = {
   changeSorting: PropTypes.func,
   search: PropTypes.string,
   changeSearch: PropTypes.func,
+  resetFilters: PropTypes.func,
 };
 
 export { EmployeersList };
